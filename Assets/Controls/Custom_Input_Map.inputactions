@@ -1,6 +1,6 @@
 {
     "version": 1,
-    "name": "CharacterInputActionMap",
+    "name": "Custom_Input_Map",
     "maps": [
         {
             "name": "Player",
