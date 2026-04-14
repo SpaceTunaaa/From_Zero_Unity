@@ -12,6 +12,7 @@ public class CharacterInputController : MonoBehaviour, Custom_Input_Action_Map.I
     public bool MoveDownPressed { get; private set; }
     public bool MoveLeftPressed { get; private set; }
     public bool MoveRightPressed { get; private set; }
+    public bool ExpandPressed { get; private set; }
 
     // Combines the four direction buttons into a single 2D movement vector.
     public Vector2 MoveDirection => new Vector2(
@@ -46,6 +47,7 @@ public class CharacterInputController : MonoBehaviour, Custom_Input_Action_Map.I
         MoveDownPressed = false;
         MoveLeftPressed = false;
         MoveRightPressed = false;
+        ExpandPressed = false;
     }
 
     // Updates a movement key state and logs the moment it is first pressed.
@@ -83,5 +85,11 @@ public class CharacterInputController : MonoBehaviour, Custom_Input_Action_Map.I
     public void OnMoveRight(InputAction.CallbackContext context)
     {
         MoveRightPressed = UpdateMoveState(MoveRightPressed, context, "MoveRight");
+    }
+
+    // Updates the expand state from the any-key action.
+    public void OnExpand(InputAction.CallbackContext context)
+    {
+        ExpandPressed = UpdateMoveState(ExpandPressed, context, "Expand");
     }
 }

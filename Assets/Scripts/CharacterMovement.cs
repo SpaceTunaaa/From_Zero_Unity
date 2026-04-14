@@ -1,5 +1,7 @@
 using System.Collections.Generic;
+using System;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 // Spawns the player onto the graph and moves between linked nodes from WASD input.
 public class CharacterMovement : MonoBehaviour
@@ -52,7 +54,7 @@ public class CharacterMovement : MonoBehaviour
     // Finds a random node marked as a player spawn and places the player on it.
     private void SpawnAtRandomPlayerNode()
     {
-        Node[] allNodes = FindObjectsOfType<Node>();
+        Node[] allNodes = FindObjectsByType<Node>(FindObjectsSortMode.None);
         List<Node> spawnNodes = new List<Node>();
 
         foreach (Node node in allNodes)
@@ -69,7 +71,7 @@ public class CharacterMovement : MonoBehaviour
             return;
         }
 
-        Node spawnNode = spawnNodes[Random.Range(0, spawnNodes.Count)];
+        Node spawnNode = spawnNodes[UnityEngine.Random.Range(0, spawnNodes.Count)];
         SnapToNode(spawnNode);
     }
 

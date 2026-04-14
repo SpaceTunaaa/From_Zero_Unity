@@ -127,6 +127,15 @@ public partial class @Custom_Input_Action_Map: IInputActionCollection2, IDisposa
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""Expand"",
+                    ""type"": ""Button"",
+                    ""id"": ""8080cd41-9ce8-450a-9206-864fe5959177"",
+                    ""expectedControlType"": """",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
                 }
             ],
             ""bindings"": [
@@ -217,6 +226,17 @@ public partial class @Custom_Input_Action_Map: IInputActionCollection2, IDisposa
                     ""action"": ""MoveRight"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""9183ae46-8588-45fc-bacb-6cc9a39511bf"",
+                    ""path"": ""<Keyboard>/anyKey"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Expand"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
                 }
             ]
         }
@@ -229,6 +249,7 @@ public partial class @Custom_Input_Action_Map: IInputActionCollection2, IDisposa
         m_Player_MoveDown = m_Player.FindAction("MoveDown", throwIfNotFound: true);
         m_Player_MoveLeft = m_Player.FindAction("MoveLeft", throwIfNotFound: true);
         m_Player_MoveRight = m_Player.FindAction("MoveRight", throwIfNotFound: true);
+        m_Player_Expand = m_Player.FindAction("Expand", throwIfNotFound: true);
     }
 
     ~@Custom_Input_Action_Map()
@@ -313,6 +334,7 @@ public partial class @Custom_Input_Action_Map: IInputActionCollection2, IDisposa
     private readonly InputAction m_Player_MoveDown;
     private readonly InputAction m_Player_MoveLeft;
     private readonly InputAction m_Player_MoveRight;
+    private readonly InputAction m_Player_Expand;
     /// <summary>
     /// Provides access to input actions defined in input action map "Player".
     /// </summary>
@@ -340,6 +362,10 @@ public partial class @Custom_Input_Action_Map: IInputActionCollection2, IDisposa
         /// Provides access to the underlying input action "Player/MoveRight".
         /// </summary>
         public InputAction @MoveRight => m_Wrapper.m_Player_MoveRight;
+        /// <summary>
+        /// Provides access to the underlying input action "Player/Expand".
+        /// </summary>
+        public InputAction @Expand => m_Wrapper.m_Player_Expand;
         /// <summary>
         /// Provides access to the underlying input action map instance.
         /// </summary>
@@ -378,6 +404,9 @@ public partial class @Custom_Input_Action_Map: IInputActionCollection2, IDisposa
             @MoveRight.started += instance.OnMoveRight;
             @MoveRight.performed += instance.OnMoveRight;
             @MoveRight.canceled += instance.OnMoveRight;
+            @Expand.started += instance.OnExpand;
+            @Expand.performed += instance.OnExpand;
+            @Expand.canceled += instance.OnExpand;
         }
 
         /// <summary>
@@ -401,6 +430,9 @@ public partial class @Custom_Input_Action_Map: IInputActionCollection2, IDisposa
             @MoveRight.started -= instance.OnMoveRight;
             @MoveRight.performed -= instance.OnMoveRight;
             @MoveRight.canceled -= instance.OnMoveRight;
+            @Expand.started -= instance.OnExpand;
+            @Expand.performed -= instance.OnExpand;
+            @Expand.canceled -= instance.OnExpand;
         }
 
         /// <summary>
@@ -469,5 +501,12 @@ public partial class @Custom_Input_Action_Map: IInputActionCollection2, IDisposa
         /// <seealso cref="UnityEngine.InputSystem.InputAction.performed" />
         /// <seealso cref="UnityEngine.InputSystem.InputAction.canceled" />
         void OnMoveRight(InputAction.CallbackContext context);
+        /// <summary>
+        /// Method invoked when associated input action "Expand" is either <see cref="UnityEngine.InputSystem.InputAction.started" />, <see cref="UnityEngine.InputSystem.InputAction.performed" /> or <see cref="UnityEngine.InputSystem.InputAction.canceled" />.
+        /// </summary>
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.started" />
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.performed" />
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.canceled" />
+        void OnExpand(InputAction.CallbackContext context);
     }
 }
