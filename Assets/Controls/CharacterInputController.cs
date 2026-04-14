@@ -49,13 +49,13 @@ public class CharacterInputController : MonoBehaviour, Custom_Input_Action_Map.I
     }
 
     // Updates a movement key state and logs the moment it is first pressed.
-    private bool UpdateMoveState(bool currentState, InputAction.CallbackContext context, string actionName, string keyName)
+    private bool UpdateMoveState(bool currentState, InputAction.CallbackContext context, string action)
     {
         bool newState = context.ReadValueAsButton();
 
         if (!currentState && newState)
         {
-            Debug.Log($"{actionName} pressed with {keyName}");
+            Debug.Log($"{action}");
         }
 
         return newState;
@@ -64,24 +64,24 @@ public class CharacterInputController : MonoBehaviour, Custom_Input_Action_Map.I
     // Updates the "up" state from the W key action.
     public void OnMoveUp(InputAction.CallbackContext context)
     {
-        MoveUpPressed = UpdateMoveState(MoveUpPressed, context, "MoveUp", "W");
+        MoveUpPressed = UpdateMoveState(MoveUpPressed, context, "MoveUp");
     }
 
     // Updates the "down" state from the S key action.
     public void OnMoveDown(InputAction.CallbackContext context)
     {
-        MoveDownPressed = UpdateMoveState(MoveDownPressed, context, "MoveDown", "S");
+        MoveDownPressed = UpdateMoveState(MoveDownPressed, context, "MoveDown");
     }
 
     // Updates the "left" state from the A key action.
     public void OnMoveLeft(InputAction.CallbackContext context)
     {
-        MoveLeftPressed = UpdateMoveState(MoveLeftPressed, context, "MoveLeft", "A");
+        MoveLeftPressed = UpdateMoveState(MoveLeftPressed, context, "MoveLeft");
     }
 
     // Updates the "right" state from the D key action.
     public void OnMoveRight(InputAction.CallbackContext context)
     {
-        MoveRightPressed = UpdateMoveState(MoveRightPressed, context, "MoveRight", "D");
+        MoveRightPressed = UpdateMoveState(MoveRightPressed, context, "MoveRight");
     }
 }
