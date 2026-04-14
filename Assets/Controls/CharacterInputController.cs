@@ -57,7 +57,7 @@ public class CharacterInputController : MonoBehaviour, Custom_Input_Action_Map.I
 
         if (!currentState && newState)
         {
-            Debug.Log($"{action}");
+            // Debug.Log($"{action}");
         }
 
         return newState;
