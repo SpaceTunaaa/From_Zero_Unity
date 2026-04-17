@@ -23,6 +23,7 @@ public class Node : MonoBehaviour
     // Marks whether this node should be used as a player spawn point.
     [Header("Node Settings")]
     [SerializeField] private bool playerSpawns;
+    [SerializeField] private bool isTransition;
 
     // Inspector-editable references to neighboring nodes.
     [Header("Neighbor Links")]
@@ -34,6 +35,7 @@ public class Node : MonoBehaviour
     // Read-only accessors for the node position and each linked neighbor.
     public Vector2 Center => center;
     public bool PlayerSpawns => playerSpawns;
+    public bool IsTransition => isTransition;
     public Node Up => up;
     public Node Down => down;
     public Node Left => left;

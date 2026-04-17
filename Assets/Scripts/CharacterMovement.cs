@@ -19,6 +19,9 @@ public class CharacterMovement : MonoBehaviour
     private bool moveLeftWasPressed;
     private bool moveRightWasPressed;
 
+    public Node CurrentNode => currentNode;
+    public Node TargetNode => targetNode;
+
     private void Awake()
     {
         if (inputController == null)

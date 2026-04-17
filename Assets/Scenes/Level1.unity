@@ -255,6 +255,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::Node
   center: {x: 5.386508, y: 101.1}
   playerSpawns: 0
+  isTransition: 0
   up: {fileID: 1854659060}
   down: {fileID: 0}
   left: {fileID: 0}
@@ -433,6 +434,60 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5084ce8fda58f4cdf8227e6775d049a7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Node
+--- !u!1 &62002265
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 62002267}
+  - component: {fileID: 62002266}
+  m_Layer: 0
+  m_Name: Animation
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!95 &62002266
+Animator:
+  serializedVersion: 7
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 62002265}
+  m_Enabled: 0
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 0}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_AnimatePhysics: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
+--- !u!4 &62002267
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 62002265}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -43.6469, y: -0.355, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &68849734
 GameObject:
   m_ObjectHideFlags: 0
@@ -628,6 +683,7 @@ GameObject:
   - component: {fileID: 148093239}
   - component: {fileID: 148093240}
   - component: {fileID: 148093241}
+  - component: {fileID: 148093242}
   m_Layer: 0
   m_Name: Player
   m_TagString: Untagged
@@ -708,6 +764,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 1187939548}
+  - {fileID: 1728193704}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &148093239
@@ -758,6 +815,25 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
+--- !u!114 &148093242
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 148093236}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c77b56040bcae4b13ab6a38333064462, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Level1Transition
+  targetAnimator: {fileID: 1728193706}
+  targetAnimation: {fileID: 7400000, guid: e2e4695e4a9f64527a5a632f03fa5f89, type: 2}
+  targetAnimationStateName: 1DTo2D
+  fallbackAnimationLength: 1
+  sceneLoadEarlyOffset: 0.05
+  nextSceneName: Level2
+  disableMovementDuringTransition: 1
 --- !u!1 &149692330
 GameObject:
   m_ObjectHideFlags: 0
@@ -1161,6 +1237,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::Node
   center: {x: 6.5, y: 0}
   playerSpawns: 0
+  isTransition: 0
   up: {fileID: 2055942722}
   down: {fileID: 0}
   left: {fileID: 1427082872}
@@ -1416,7 +1493,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: -4, y: 160.1, z: 10}
-  m_LocalScale: {x: 229.12964, y: 441.5182, z: 1.4508}
+  m_LocalScale: {x: 309.325, y: 441.5182, z: 1.4508}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
@@ -2221,6 +2298,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::Node
   center: {x: 13.82, y: 101.1}
   playerSpawns: 0
+  isTransition: 0
   up: {fileID: 1041699512}
   down: {fileID: 0}
   left: {fileID: 42043694}
@@ -3182,6 +3260,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::Node
   center: {x: 5.346509, y: 132.47}
   playerSpawns: 0
+  isTransition: 0
   up: {fileID: 0}
   down: {fileID: 0}
   left: {fileID: 985055222}
@@ -4030,6 +4109,10 @@ PrefabInstance:
     - target: {fileID: 352752016350640518, guid: f1aa4f1d34ddd4cc88fb596f95069567, type: 3}
       propertyPath: center.y
       value: 340.8
+      objectReference: {fileID: 0}
+    - target: {fileID: 352752016350640518, guid: f1aa4f1d34ddd4cc88fb596f95069567, type: 3}
+      propertyPath: playerSpawns
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2927892170920270100, guid: f1aa4f1d34ddd4cc88fb596f95069567, type: 3}
       propertyPath: m_Name
@@ -6074,17 +6157,21 @@ PrefabInstance:
       propertyPath: center.y
       value: 317.34
       objectReference: {fileID: 0}
+    - target: {fileID: 352752016350640518, guid: f1aa4f1d34ddd4cc88fb596f95069567, type: 3}
+      propertyPath: isTransition
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 2927892170920270100, guid: f1aa4f1d34ddd4cc88fb596f95069567, type: 3}
       propertyPath: m_Name
       value: Node3 (49)
       objectReference: {fileID: 0}
     - target: {fileID: 7524526079642044378, guid: f1aa4f1d34ddd4cc88fb596f95069567, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -74.84
+      value: -102.9
       objectReference: {fileID: 0}
     - target: {fileID: 7524526079642044378, guid: f1aa4f1d34ddd4cc88fb596f95069567, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 317.34
+      value: 300.6
       objectReference: {fileID: 0}
     - target: {fileID: 7524526079642044378, guid: f1aa4f1d34ddd4cc88fb596f95069567, type: 3}
       propertyPath: m_LocalPosition.z
@@ -6948,6 +7035,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::Node
   center: {x: 13.8, y: 106.81}
   playerSpawns: 0
+  isTransition: 0
   up: {fileID: 0}
   down: {fileID: 280992565}
   left: {fileID: 0}
@@ -7919,9 +8007,9 @@ Camera:
   m_LensShift: {x: 0, y: 0}
   m_NormalizedViewPortRect:
     serializedVersion: 2
-    x: 0.19051814
+    x: 0.19084638
     y: 0
-    width: 0.6189637
+    width: 0.61830723
     height: 1
   near clip plane: 0.3
   far clip plane: 1000
@@ -8299,6 +8387,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::Node
   center: {x: 31.17, y: 101.1}
   playerSpawns: 0
+  isTransition: 0
   up: {fileID: 900964176}
   down: {fileID: 990383679}
   left: {fileID: 1496095873}
@@ -8973,6 +9062,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::Node
   center: {x: 5.306509, y: 123.64}
   playerSpawns: 0
+  isTransition: 0
   up: {fileID: 0}
   down: {fileID: 1854659060}
   left: {fileID: 985055222}
@@ -9173,7 +9263,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Node
   center: {x: -22.5, y: -0.15}
-  playerSpawns: 1
+  playerSpawns: 0
+  isTransition: 0
   up: {fileID: 0}
   down: {fileID: 0}
   left: {fileID: 0}
@@ -9471,6 +9562,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::Node
   center: {x: 44.329998, y: 21.18}
   playerSpawns: 0
+  isTransition: 0
   up: {fileID: 0}
   down: {fileID: 0}
   left: {fileID: 1941367335}
@@ -9763,6 +9855,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::Node
   center: {x: 23.369999, y: 101.1}
   playerSpawns: 0
+  isTransition: 0
   up: {fileID: 1911787252}
   down: {fileID: 0}
   left: {fileID: 280992565}
@@ -9884,6 +9977,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::Node
   center: {x: 40.78, y: 17.96}
   playerSpawns: 0
+  isTransition: 0
   up: {fileID: 1941367335}
   down: {fileID: 0}
   left: {fileID: 0}
@@ -11169,6 +11263,120 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5084ce8fda58f4cdf8227e6775d049a7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Node
+--- !u!1 &1728193703
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1728193704}
+  - component: {fileID: 1728193706}
+  - component: {fileID: 1728193705}
+  m_Layer: 0
+  m_Name: Transition
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1728193704
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1728193703}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: -31.843061, y: 15.808505, z: 7.275922}
+  m_LocalScale: {x: 0.1237258, y: 0.12372142, z: 0.12371977}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 148093238}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!212 &1728193705
+SpriteRenderer:
+  serializedVersion: 2
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1728193703}
+  m_Enabled: 1
+  m_CastShadows: 0
+  m_ReceiveShadows: 0
+  m_DynamicOccludee: 1
+  m_StaticShadowCaster: 0
+  m_MotionVectors: 1
+  m_LightProbeUsage: 1
+  m_ReflectionProbeUsage: 1
+  m_RayTracingMode: 0
+  m_RayTraceProcedural: 0
+  m_RayTracingAccelStructBuildFlagsOverride: 0
+  m_RayTracingAccelStructBuildFlags: 1
+  m_SmallMeshCulling: 1
+  m_ForceMeshLod: -1
+  m_MeshLodSelectionBias: 0
+  m_RenderingLayerMask: 1
+  m_RendererPriority: 0
+  m_Materials:
+  - {fileID: 10754, guid: 0000000000000000f000000000000000, type: 0}
+  m_StaticBatchInfo:
+    firstSubMesh: 0
+    subMeshCount: 0
+  m_StaticBatchRoot: {fileID: 0}
+  m_ProbeAnchor: {fileID: 0}
+  m_LightProbeVolumeOverride: {fileID: 0}
+  m_ScaleInLightmap: 1
+  m_ReceiveGI: 1
+  m_PreserveUVs: 0
+  m_IgnoreNormalsForChartDetection: 0
+  m_ImportantGI: 0
+  m_StitchLightmapSeams: 1
+  m_SelectedEditorRenderState: 0
+  m_MinimumChartSize: 4
+  m_AutoUVMaxDistance: 0.5
+  m_AutoUVMaxAngle: 89
+  m_LightmapParameters: {fileID: 0}
+  m_GlobalIlluminationMeshLod: 0
+  m_SortingLayerID: 0
+  m_SortingLayer: 0
+  m_SortingOrder: 0
+  m_MaskInteraction: 0
+  m_Sprite: {fileID: 8227678775346026113, guid: 4693cfdb4213a404fbcf63de5840b7d4, type: 3}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_FlipX: 0
+  m_FlipY: 0
+  m_DrawMode: 0
+  m_Size: {x: 19.204689, y: 19.2}
+  m_AdaptiveModeThreshold: 0.5
+  m_SpriteTileMode: 0
+  m_WasSpriteAssigned: 1
+  m_SpriteSortPoint: 0
+--- !u!95 &1728193706
+Animator:
+  serializedVersion: 7
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1728193703}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 6057ae60c492347eb9ab8eb1cabb2097, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_AnimatePhysics: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
 --- !u!1 &1756072996
 GameObject:
   m_ObjectHideFlags: 0
@@ -11767,6 +11975,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::Node
   center: {x: 5.386508, y: 113.799995}
   playerSpawns: 0
+  isTransition: 0
   up: {fileID: 1409193873}
   down: {fileID: 42043694}
   left: {fileID: 1822847543}
@@ -12255,6 +12464,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::Node
   center: {x: 23.34, y: 106.63}
   playerSpawns: 0
+  isTransition: 0
   up: {fileID: 0}
   down: {fileID: 1496095873}
   left: {fileID: 0}
@@ -12465,6 +12675,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::Node
   center: {x: 40.72, y: 21.24}
   playerSpawns: 0
+  isTransition: 0
   up: {fileID: 2146069641}
   down: {fileID: 1547135276}
   left: {fileID: 2021092005}
@@ -12777,6 +12988,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::Node
   center: {x: 31.3, y: 21.22}
   playerSpawns: 0
+  isTransition: 0
   up: {fileID: 178604396}
   down: {fileID: 0}
   left: {fileID: 2055942722}
@@ -13160,6 +13372,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::Node
   center: {x: 6.4, y: 21.39}
   playerSpawns: 0
+  isTransition: 0
   up: {fileID: 0}
   down: {fileID: 174226205}
   left: {fileID: 0}
@@ -13866,6 +14079,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::Node
   center: {x: 40.63, y: 24.6}
   playerSpawns: 0
+  isTransition: 0
   up: {fileID: 0}
   down: {fileID: 1941367335}
   left: {fileID: 0}
@@ -14089,3 +14303,4 @@ SceneRoots:
   - {fileID: 427568837}
   - {fileID: 687514643}
   - {fileID: 990383678}
+  - {fileID: 62002267}
