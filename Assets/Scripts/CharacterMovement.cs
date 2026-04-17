@@ -1,7 +1,6 @@
 using System.Collections.Generic;
 using System;
 using UnityEngine;
-using UnityEngine.SceneManagement;
 
 // Spawns the player onto the graph and moves between linked nodes from WASD input.
 public class CharacterMovement : MonoBehaviour
@@ -21,6 +20,8 @@ public class CharacterMovement : MonoBehaviour
 
     public Node CurrentNode => currentNode;
     public Node TargetNode => targetNode;
+
+    public event Action<Node> NodeReached;
 
     private void Awake()
     {
@@ -133,6 +134,7 @@ public class CharacterMovement : MonoBehaviour
         {
             currentNode = targetNode;
             targetNode = null;
+            NodeReached?.Invoke(currentNode);
         }
     }
 

@@ -10,6 +10,9 @@ public class Level1Transition : MonoBehaviour
     [SerializeField] private string targetAnimationStateName;
     [SerializeField] private float fallbackAnimationLength = 1f;
     [SerializeField] private float sceneLoadEarlyOffset = 0.05f;
+    [SerializeField] private bool placeAnimationOnPlayer = true;
+    [SerializeField] private bool hidePlayerSpriteDuringTransition = true;
+    [SerializeField] private float transitionAnimationScale = 0.15f;
 
     [Header("Scene")]
     [SerializeField] private string nextSceneName = "Level2";
@@ -17,12 +20,48 @@ public class Level1Transition : MonoBehaviour
 
     private CharacterMovement characterMovement;
     private CharacterInputController inputController;
+    private SpriteRenderer playerSpriteRenderer;
     private bool transitionStarted;
 
     private void Awake()
     {
-        characterMovement = GetComponent<CharacterMovement>();
-        inputController = GetComponent<CharacterInputController>();
+        CacheComponents();
+    }
+
+    private void OnEnable()
+    {
+        CacheComponents();
+
+        if (characterMovement != null)
+        {
+            characterMovement.NodeReached += HandleNodeReached;
+        }
+    }
+
+    private void OnDisable()
+    {
+        if (characterMovement != null)
+        {
+            characterMovement.NodeReached -= HandleNodeReached;
+        }
+    }
+
+    private void CacheComponents()
+    {
+        if (characterMovement == null)
+        {
+            characterMovement = GetComponent<CharacterMovement>();
+        }
+
+        if (inputController == null)
+        {
+            inputController = GetComponent<CharacterInputController>();
+        }
+
+        if (playerSpriteRenderer == null)
+        {
+            playerSpriteRenderer = GetComponent<SpriteRenderer>();
+        }
 
         if (targetAnimator == null)
         {
@@ -30,24 +69,14 @@ public class Level1Transition : MonoBehaviour
         }
     }
 
-    private void Update()
+    private void HandleNodeReached(Node node)
     {
-        if (transitionStarted)
+        if (transitionStarted || node == null || !node.IsTransition)
         {
             return;
         }
 
-        if (IsOnTransitionNode())
-        {
-            StartTransition();
-        }
-    }
-
-    private bool IsOnTransitionNode()
-    {
-        return characterMovement != null
-            && characterMovement.CurrentNode != null
-            && characterMovement.CurrentNode.IsTransition;
+        StartTransition();
     }
 
     private void StartTransition()
@@ -82,6 +111,7 @@ public class Level1Transition : MonoBehaviour
         if (targetAnimator != null)
         {
             targetAnimator.enabled = true;
+            PrepareTransitionVisual();
 
             string stateName = GetTargetStateName();
 
@@ -101,6 +131,51 @@ public class Level1Transition : MonoBehaviour
         float waitTime = Mathf.Max(0f, animationLength - sceneLoadEarlyOffset);
         yield return new WaitForSeconds(waitTime);
         SceneManager.LoadScene(nextSceneName);
+    }
+
+    private void PrepareTransitionVisual()
+    {
+        if (targetAnimator == null)
+        {
+            return;
+        }
+
+        Transform animationTransform = targetAnimator.transform;
+
+        if (placeAnimationOnPlayer)
+        {
+            if (animationTransform.parent == transform)
+            {
+                animationTransform.localPosition = Vector3.zero;
+                animationTransform.localRotation = Quaternion.identity;
+            }
+            else
+            {
+                animationTransform.position = transform.position;
+                animationTransform.rotation = transform.rotation;
+            }
+        }
+
+        float scale = Mathf.Max(0.01f, transitionAnimationScale);
+        animationTransform.localScale = Vector3.one * scale;
+
+        SpriteRenderer transitionSpriteRenderer = targetAnimator.GetComponent<SpriteRenderer>();
+
+        if (transitionSpriteRenderer != null)
+        {
+            transitionSpriteRenderer.enabled = true;
+
+            if (playerSpriteRenderer != null)
+            {
+                transitionSpriteRenderer.sortingLayerID = playerSpriteRenderer.sortingLayerID;
+                transitionSpriteRenderer.sortingOrder = playerSpriteRenderer.sortingOrder + 1;
+            }
+        }
+
+        if (hidePlayerSpriteDuringTransition && playerSpriteRenderer != null)
+        {
+            playerSpriteRenderer.enabled = false;
+        }
     }
 
     private string GetTargetStateName()
