@@ -7,7 +7,7 @@ public class CharacterJumpRotation : MonoBehaviour
 {
     [Header("Rotation")]
     [SerializeField] private Transform visualTarget;
-    [SerializeField] private float rotationSpeed = 360f;
+    [SerializeField] private float rotationSpeed = 180f;
     [SerializeField] private bool rotateClockwiseWhenMovingRight = true;
     [SerializeField] private bool snapUprightOnLanding = true;
 
